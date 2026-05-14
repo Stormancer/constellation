@@ -58,6 +58,9 @@ add_library(constellation::constellation_warnings ALIAS constellation_warnings)
 #add_library(constellation::constellation_options INTERFACE IMPORTED)
 #add_library(constellation::constellation_warnings INTERFACE IMPORTED)
 
+# configure the backend to use 
+set(BACKEND std)
+
 # configure files based on CMake configuration options
 add_subdirectory(configured_files)
 

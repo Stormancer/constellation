@@ -9,7 +9,7 @@ add_library(constellation::sample_library ALIAS sample_library)
 
 target_link_libraries(sample_library PRIVATE constellation_options constellation_warnings)
 
-target_include_directories(sample_library ${WARNING_GUARD} PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+target_include_directories(sample_library ${WARNING_GUARD} PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/main>
                                                                   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>)
 
 if (constellation_BUILD_FUZZ_TESTS)

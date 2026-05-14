@@ -47,6 +47,7 @@ target_link_libraries(
   PRIVATE constellation::constellation_warnings
           constellation::constellation_options
           constellation::sample_library
+          constellation::quic
           Catch2::Catch2WithMain)
 
 constellation_configure_linker(tests)
@@ -75,12 +76,12 @@ catch_discover_tests(
   .xml)
 
 # Add a file containing a set of constexpr tests
-add_executable(constexpr_tests constexpr_tests.cpp)
+add_executable(constexpr_tests "quic_tests.cpp")
 target_link_libraries(
   constexpr_tests
   PRIVATE constellation::constellation_warnings
           constellation::constellation_options
-          constellation::sample_library
+          constellation::quic
           Catch2::Catch2WithMain)
 
 constellation_configure_linker(constexpr_tests)
@@ -100,7 +101,7 @@ catch_discover_tests(
 
 # Disable the constexpr portion of the test, and build again this allows us to have an executable that we can debug when
 # things go wrong with the constexpr testing
-add_executable(relaxed_constexpr_tests constexpr_tests.cpp)
+add_executable(relaxed_constexpr_tests "quic_tests.cpp")
 target_link_libraries(
   relaxed_constexpr_tests
   PRIVATE constellation::constellation_warnings
