@@ -1,9 +1,11 @@
 #pragma once
+#include <quic/quic_export.hpp>
+
 #include <quic/peer.hpp>
 
 namespace Constellation
 {
-	class QuicPeerBuilder
+	QUIC_EXPORT class QuicPeerBuilder
 	{
         public:
           /*
