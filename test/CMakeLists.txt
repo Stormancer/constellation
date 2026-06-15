@@ -41,7 +41,7 @@ add_test(
 add_test(NAME cli.version_matches COMMAND intro --version)
 set_tests_properties(cli.version_matches PROPERTIES PASS_REGULAR_EXPRESSION "${PROJECT_VERSION}")
 
-add_executable(tests "quic_tests.cpp")
+add_executable(tests "quic_tests.cpp" "MockNetworkTransport.cpp")
 target_link_libraries(
   tests
   PRIVATE constellation::constellation_warnings

@@ -7,7 +7,7 @@ TEST_CASE("Create a peer using a builder.", "[quic]")
   using namespace Constellation;
 
   QuicPeerBuilder builder;
-
+  builder.configureTransport<MockNetworkTransport>([](auto b) { b.listen(0); });
 
   auto peer = builder.create();
 }
