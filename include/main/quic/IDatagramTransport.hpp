@@ -3,5 +3,8 @@
 
 namespace Constellation 
 {
+	class IDatagramTransport
+	{
 
+	};
 }

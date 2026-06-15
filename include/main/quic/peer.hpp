@@ -1,26 +1,30 @@
 #pragma once
 #include <quic/quic_export.hpp>
 #include <backend/primitives.hpp>
-#include <backend/string.hpp>
 #include <backend/memory.hpp>
-#include <async/task.hpp>
 #include <quic/remotePeer.hpp>
-
+#include <quic/path.hpp>
 
 namespace Constellation
 {
 	class QuicPeerImpl;
-	
+class QuicPeerBuilder;
 	/*
 	* Represents a local quic peer.
 	*/
 	QUIC_EXPORT class QuicPeer
 	{
+          friend QuicPeerBuilder;
         public:
-          Task<QuicRemotePeer> connect(String &hostname, uint16 port);
+
+          /*
+		  * Starts connection to a remote peer joinable through the provided path.
+		  */
+          QuicRemotePeer connect(const Path& path);
 
 
         private:
+          QuicPeer(SharedPtr<QuicPeerImpl> impl) : _impl(impl) {}
           SharedPtr<QuicPeerImpl> _impl;
 	};
 }

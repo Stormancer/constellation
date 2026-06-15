@@ -49,6 +49,7 @@ target_link_libraries(
           constellation::sample_library
           constellation::quic
           Catch2::Catch2WithMain)
+target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 constellation_configure_linker(tests)
 

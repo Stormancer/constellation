@@ -1,7 +1,7 @@
 include(GenerateExportHeader)
 
 
-add_library(quic peer.cpp)
+add_library(quic peer.cpp "peerBuilder.cpp")
 
 
 
@@ -13,6 +13,7 @@ target_include_directories(quic ${WARNING_GUARD} PUBLIC $<BUILD_INTERFACE:${PROJ
                                                         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/backends/${BACKEND}>
                                                         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
                                                        )
+target_include_directories(quic ${WARNING_GUARD} PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/quic>)
 
 if (constellation_BUILD_FUZZ_TESTS)
   target_link_libraries(quic PRIVATE -fsanitize=fuzzer-no-link)
