@@ -5,7 +5,7 @@ namespace Constellation {
 template<typename T> class Vector
 {
 public:
-  void add(T &item) { _data.push_back(item); }
+  void add(const T &item) { _data.push_back(item); }
 
 private:
   std::vector<T> _data;

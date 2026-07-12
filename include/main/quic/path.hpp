@@ -13,6 +13,8 @@ class IDatagramTransport;
 QUIC_EXPORT class Path
 {
 public:
+  Path(const IDatagramTransport *transport, SharedPtr<const void> context) : transport(transport), context(context) {}
+
   /*
    * Creates a string representation of the path.
    */
@@ -25,7 +27,7 @@ public:
 
 
 private:
-  IDatagramTransport *transport;
-  SharedPtr<void> context;
+  const IDatagramTransport *transport;
+  SharedPtr<const void> context;
 };
 }// namespace Constellation

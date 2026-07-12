@@ -1,6 +1,6 @@
 #include <quic/peer.hpp>
-#include <quic/path.hpp>
 #include <quic/remotePeer.hpp>
+#include <quic/connectOptions.hpp>
 #include <peerImpl.hpp>
 
 namespace Constellation
@@ -9,8 +9,14 @@ namespace Constellation
 	
 
 	
-	QuicRemotePeer QuicPeer::connect(const Path& path) 
+	QuicRemotePeer QuicPeer::connect(const ConnectOptions& options) 
 	{ 
-		return _impl->connect(path);
+		return _impl->connect(options);
+	}
+
+
+	QuicRemotePeer QuicPeerImpl::connect(const ConnectOptions& options)
+	{
+		
 	}
  }

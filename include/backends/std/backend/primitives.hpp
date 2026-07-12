@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 
 namespace Constellation 
 {
@@ -10,4 +11,5 @@ using uint32 = unsigned int;
 using int32 = int;
 using uint64 = unsigned long long;
 using int64 = long long;
+using byte = std::byte;
 }// namespace Constellation

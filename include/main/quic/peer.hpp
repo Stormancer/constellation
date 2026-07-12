@@ -1,10 +1,12 @@
 #pragma once
 #include <quic/quic_export.hpp>
+
 #include <backend/primitives.hpp>
 #include <backend/memory.hpp>
-#include <quic/remotePeer.hpp>
-#include <quic/path.hpp>
 
+
+#include <quic/remotePeer.hpp>
+#include <quic/connectOptions.hpp>
 namespace Constellation
 {
 	class QuicPeerImpl;
@@ -18,9 +20,9 @@ class QuicPeerBuilder;
         public:
 
           /*
-		  * Starts connection to a remote peer joinable through the provided path.
+		  * Starts a connection to a remote peer.
 		  */
-          QuicRemotePeer connect(const Path& path);
+          QuicRemotePeer connect(const ConnectOptions& options);
 
 
         private:

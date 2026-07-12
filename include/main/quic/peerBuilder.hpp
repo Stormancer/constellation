@@ -15,9 +15,9 @@ public:
    */
   QuicPeer create() const;
 
-  Vector<IDatagramTransport *> transports;
+  Vector<const IDatagramTransport *> transports;
 
-  QuicPeerBuilder &addTransport(IDatagramTransport *transport)
+  QuicPeerBuilder &addTransport(const IDatagramTransport *transport)
   {
     transports.add(transport);
     return *this;
