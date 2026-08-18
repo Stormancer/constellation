@@ -8,36 +8,35 @@ TEST_CASE("Create a peer using a builder.", "[quic]")
 {
   using namespace Constellation;
 
-  MockChannel channel;
-  const auto* transport1 = channel.createTransport(0);
   
+  const MockNetworkTransport transport1;
+    
 
   QuicPeerBuilder builder;
   
-  builder.addTransport(transport1);
+  builder.addTransport(&transport1);
 
-  auto peer = builder.create();
+  builder.create();
 }
 
 TEST_CASE("Connect quic peers.", "[quic]")
 {
   using namespace Constellation;
 
-  MockChannel channel;
-  const auto *transport1 = channel.createTransport(0);
-  const auto *transport2 = channel.createTransport(1);
+  const MockNetworkTransport transport;
+
 
 
   QuicPeerBuilder builder;
-  builder.addTransport(transport1);
+  builder.addTransport(&transport);
   auto peer1 = builder.create();
 
   builder = QuicPeerBuilder();
-  builder.addTransport(transport2);
+  builder.addTransport(&transport);
   auto peer2 = builder.create();
 
   ConnectOptions connectOpt;
-  connectOpt.paths.add(transport2->getPath(0));
+  connectOpt.paths.add(transport.getPath(0));
   peer2.connect(connectOpt);
 
 }

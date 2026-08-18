@@ -1,22 +1,22 @@
+#include <peerImpl.hpp>
+#include <quic/connectOptions.hpp>
 #include <quic/peer.hpp>
 #include <quic/remotePeer.hpp>
-#include <quic/connectOptions.hpp>
-#include <peerImpl.hpp>
 
-namespace Constellation
+
+namespace Constellation {
+
+
+QuicRemotePeer QuicPeer::connect(const ConnectOptions &options) { return _impl->connect(options); }
+
+
+QuicPeerImpl::QuicPeerImpl(Vector<const IDatagramTransport *> transports) : _transports(transports) 
 {
 
-	
+}
 
-	
-	QuicRemotePeer QuicPeer::connect(const ConnectOptions& options) 
-	{ 
-		return _impl->connect(options);
-	}
-
-
-	QuicRemotePeer QuicPeerImpl::connect(const ConnectOptions& options)
-	{
-		
-	}
- }
+QuicRemotePeer QuicPeerImpl::connect(const ConnectOptions &options) 
+{
+	_connections
+}
+}// namespace Constellation

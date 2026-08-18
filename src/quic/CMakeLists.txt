@@ -1,7 +1,7 @@
 include(GenerateExportHeader)
 
 
-add_library(quic peer.cpp "peerBuilder.cpp")
+add_library(quic "peer.cpp" "peerBuilder.cpp" "path.cpp")
 
 
 

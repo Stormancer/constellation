@@ -7,6 +7,6 @@ namespace Constellation {
 QuicPeer QuicPeerBuilder::create() const 
 {
   auto peerImpl = makeShared<QuicPeerImpl>(transports);
-  return { peerImpl };
+  return QuicPeer{ peerImpl };
 }
 }// namespace Constellation

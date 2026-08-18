@@ -2,27 +2,25 @@
 #include <quic/IDatagramTransport.hpp>
 #include <quic/path.hpp>
 #include <backend/map.hpp>
+#include <backend/memory.hpp>
+#include <backend/primitives.hpp>
 
-class MockChannel;
+struct EndpointContext;
 
 class MockNetworkTransport : public Constellation::IDatagramTransport
 {
 public:
-  MockNetworkTransport(MockChannel *channel) : _channel(channel) {}
-
+ 
   Constellation::Path getPath(int destinationId) const;
 
-private:
-  const MockChannel *_channel;
-};
 
-class MockChannel
-{
-public:
-  const MockNetworkTransport *createTransport(int id);
-
-  const MockNetworkTransport *getTransport(int id) const;
+  // Inherited via IDatagramTransport
+  Constellation::String toString(Constellation::SharedPtr<const void> context) const override;
+  bool isValid(Constellation::SharedPtr<const void> context) const override;
+  Constellation::size_t getHashCode(Constellation::SharedPtr<const void> context) const override;
+  bool areEqual(Constellation::SharedPtr<const void> left, Constellation::SharedPtr<const void> right) const override;
 
 private:
-  Constellation::Map<int, MockNetworkTransport> _transports;
+  mutable Constellation::Map<int, Constellation::SharedPtr<EndpointContext>> _endpoints; 
 };
+

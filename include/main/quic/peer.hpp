@@ -26,7 +26,7 @@ class QuicPeerBuilder;
 
 
         private:
-          QuicPeer(SharedPtr<QuicPeerImpl> impl) : _impl(impl) {}
+          explicit QuicPeer(SharedPtr<QuicPeerImpl> impl) : _impl(impl) {}
           SharedPtr<QuicPeerImpl> _impl;
 	};
 }

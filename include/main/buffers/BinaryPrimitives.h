@@ -1,17 +1,15 @@
 #pragma once
-#include <span>
-#include "stormancer/StormancerTypes.h"
+#include <backend/primitives.hpp>
+#include <backend/span.hpp>
 
-namespace Stormancer
-{
-	namespace BinaryPrimitives
-	{
-		STORMANCERCORE_API bool tryReadUint16BigEndian(const std::span<const byte>& buffer, uint16& result);
-		STORMANCERCORE_API bool tryWriteUint16BigEndian(const std::span<byte>& buffer, uint16 data);
-		STORMANCERCORE_API bool  tryReadUint16LittleEndian(const std::span<const byte>& buffer, uint16& result);
-		STORMANCERCORE_API bool  tryWriteUint16LittleEndian(const std::span<byte>& buffer, uint16 result);
+namespace Stormancer {
+namespace BinaryPrimitives {
+  bool tryReadUint16BigEndian(Span<const byte> buffer, uint16 &result);
+  bool tryWriteUint16BigEndian(Span<byte> buffer, uint16 data);
+  bool tryReadUint16LittleEndian(Span<const byte> buffer, uint16 &result);
+  bool tryWriteUint16LittleEndian(Span<byte> buffer, uint16 result);
 
-		STORMANCERCORE_API bool tryReadUint64LittleEndian(const std::span<const byte>& buffer, uint64& result);
-		STORMANCERCORE_API bool tryWriteUint64LittleEndian(const std::span<byte>& buffer, uint64 value);
-	}
-}
+  bool tryReadUint64LittleEndian(Span<const byte> buffer, uint64 &result);
+  bool tryWriteUint64LittleEndian(Span<byte> buffer, uint64 value);
+}// namespace BinaryPrimitives
+}// namespace Stormancer
